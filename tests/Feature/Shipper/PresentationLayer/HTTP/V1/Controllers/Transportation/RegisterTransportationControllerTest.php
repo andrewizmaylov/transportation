@@ -154,10 +154,14 @@ test('it fails when pickupFrom is invalid date format', function () use ($pickup
             'pickupTo' => $pickupTo,
         ]);
 
-    $response->assertStatus(500);
+    $response->assertStatus(422);
 
     $responseData = $response->json();
-    expect($responseData)->toHaveKey('errors');
+    expect($responseData)->toHaveKey('errors')
+        ->and($responseData['errors'])->toBeArray();
+
+    $errorPointers = array_map(fn ($error) => $error['source']['pointer'] ?? null, $responseData['errors']);
+    expect($errorPointers)->toContain('pickupFrom');
 });
 
 test('it fails when pickupTo is invalid date format', function () use ($pickupFrom, $name) {
@@ -170,10 +174,14 @@ test('it fails when pickupTo is invalid date format', function () use ($pickupFr
             'pickupTo' => 'invalid-date-format',
         ]);
 
-    $response->assertStatus(500);
+    $response->assertStatus(422);
 
     $responseData = $response->json();
-    expect($responseData)->toHaveKey('errors');
+    expect($responseData)->toHaveKey('errors')
+        ->and($responseData['errors'])->toBeArray();
+
+    $errorPointers = array_map(fn ($error) => $error['source']['pointer'] ?? null, $responseData['errors']);
+    expect($errorPointers)->toContain('pickupTo');
 });
 
 test('it fails when pickupFrom has invalid date values', function () use ($pickupTo, $name) {
@@ -186,10 +194,14 @@ test('it fails when pickupFrom has invalid date values', function () use ($picku
             'pickupTo' => $pickupTo,
         ]);
 
-    $response->assertStatus(500);
+    $response->assertStatus(422);
 
     $responseData = $response->json();
-    expect($responseData)->toHaveKey('errors');
+    expect($responseData)->toHaveKey('errors')
+        ->and($responseData['errors'])->toBeArray();
+
+    $errorPointers = array_map(fn ($error) => $error['source']['pointer'] ?? null, $responseData['errors']);
+    expect($errorPointers)->toContain('pickupFrom');
 });
 
 test('it fails when pickupTo is before pickupFrom', function () use ($name) {
@@ -205,10 +217,14 @@ test('it fails when pickupTo is before pickupFrom', function () use ($name) {
             'pickupTo' => $pickupTo,
         ]);
 
-    $response->assertStatus(500);
+    $response->assertStatus(422);
 
     $responseData = $response->json();
-    expect($responseData)->toHaveKey('errors');
+    expect($responseData)->toHaveKey('errors')
+        ->and($responseData['errors'])->toBeArray();
+
+    $errorPointers = array_map(fn ($error) => $error['source']['pointer'] ?? null, $responseData['errors']);
+    expect($errorPointers)->toContain('pickupTo');
 });
 
 test('it handles pickupTo equals pickupFrom', function () use ($name) {
