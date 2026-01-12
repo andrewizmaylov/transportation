@@ -1,0 +1,568 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "transportationStep.nextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Next",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "transportation",
+						"action": "nextStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "transportationStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Next",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "transportation",
+						"action": "nextStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "transportationStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"input": [
+			{
+				"id": "transportationStep.nameField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Transportation name is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(name?.value) || name.value.length >= 3",
+							"error": "Name must be at least 3 characters"
+						},
+						{
+							"expression": "isEmpty(name?.value) || name.value.length <= 255",
+							"error": "Name must not exceed 255 characters"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "name",
+				"label": {
+					"text": "Transportation Name"
+				},
+				"placeholder": "Enter transportation name",
+				"maxLength": 255
+			}
+		],
+		"dateTime": [
+			{
+				"id": "transportationStep.pickupFromField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Pickup start date is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(pickupFrom?.value) || pickupFrom.value >= new Date()",
+							"error": "Pickup start date must be in the future"
+						},
+						{
+							"expression": "isEmpty(pickupFrom?.value) || isEmpty(pickupTo?.value) || pickupFrom.value <= pickupTo.value",
+							"error": "Pickup start date must be before or equal to end date"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "300px"
+				},
+				"code": "pickupFrom",
+				"label": {
+					"text": "Pickup From"
+				},
+				"placeholder": "Select start date and time",
+				"showTime": true,
+				"minDate": "today"
+			},
+			{
+				"id": "transportationStep.pickupToField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Pickup end date is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(pickupTo?.value) || pickupTo.value >= new Date()",
+							"error": "Pickup end date must be in the future"
+						},
+						{
+							"expression": "isEmpty(pickupFrom?.value) || isEmpty(pickupTo?.value) || pickupFrom.value <= pickupTo.value",
+							"error": "Pickup end date must be after or equal to start date"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "300px"
+				},
+				"code": "pickupTo",
+				"label": {
+					"text": "Pickup To"
+				},
+				"placeholder": "Select end date and time",
+				"showTime": true,
+				"minDate": "pickupFrom"
+			}
+		],
+		"typography": [
+			{
+				"id": "transportationStep.title",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "transportationStep.title.textElement1",
+							"breakAfter": false,
+							"text": "Create Transportation",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "transportationStep.title.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "transportationStep.description",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"source": {
+					"text": [
+						{
+							"id": "transportationStep.description.textElement1",
+							"breakAfter": false,
+							"text": "Enter the basic information about your transportation request",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "transportationStep.description.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "transportationStep.pickupIntervalTitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "transportationStep.pickupIntervalTitle.textElement1",
+							"breakAfter": false,
+							"text": "Pickup Interval",
+							"style": "UIHeading3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "transportationStep.pickupIntervalTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "transportationStep.changesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 52,
+					"bottom": 40
+				},
+				"source": {
+					"text": [
+						{
+							"id": "transportationStep.changesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "All filled fields are saved automatically",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "transportationStep.changesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "mobileChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 16,
+					"bottom": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "mobileChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "All filled fields are saved automatically",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "mobileChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "transportationStep.title",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "transportationStep.description",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "transportationStep.nameField",
+							"type": "input"
+						}
+					],
+					"gridPosition": {
+						"xs": 12,
+						"m": 8,
+						"l": 8
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "transportationStep.pickupIntervalTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "transportationStep.pickupFromField",
+							"type": "dateTime"
+						},
+						{
+							"id": "transportationStep.pickupToField",
+							"type": "dateTime"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "start",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "transportationStep.changesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 6,
+						"l": 6,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "transportationStep.nextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 5,
+						"l": 5,
+						"mOffset": 1,
+						"lOffset": 1,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "center"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "transportationStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "transportation",
+					"action": "openStep",
+					"label": "createTransportationForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "createTransportationForm",
+						"extra": {
+							"formId": "",
+							"stepId": "transportationStep"
+						}
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Choose a clear, descriptive name for your transportation request. This will help carriers understand the route for transportation.",
+							"breakAfterText": false,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "Let's get started!",
+			"imageLink": "step1.png"
+		},
+		"progress": {
+			"header": "Create Transportation",
+			"progress": 20,
+			"stepName": "Basic Information"
+		},
+		"help": {
+			"title": "Need help?",
+			"successTitle": "We received your request, we'll call you soon",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Leave your phone number, we'll call you back soon — on weekdays from 9 to 18. While waiting, try to find an answer in the ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "help center",
+						"link": "#",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "I'll wait!",
+			"confirmButtonText": "Call me",
+			"cancelButtonText": "Cancel",
+			"previewText": "Need help?"
+		}
+	},
+	"draftId": ""
+}

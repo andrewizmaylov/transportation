@@ -1,0 +1,1285 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "mobilePreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Назад",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"beforeIcon": {
+					"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/blue-arrow.svg",
+					"width": 16,
+					"height": 14
+				},
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "newAd",
+						"action": "previousStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "paramsStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopPreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40,
+					"left": 24
+				},
+				"text": "Назад",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "newAd",
+						"action": "previousStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "paramsStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Дальше",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "newAd",
+						"action": "nextStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "paramsStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Дальше",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "newAd",
+						"action": "nextStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "paramsStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"number": [
+			{
+				"id": "paramsStep.totalAreaField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Введите общую площадь"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(totalArea?.value) || totalArea.value > 0",
+							"error": "Укажите площадь больше 0"
+						},
+						{
+							"expression": "isEmpty(totalArea?.value) || totalArea.value < 10000000",
+							"error": "Укажите площадь не больше 10 000 000 м²"
+						},
+						{
+							"expression": "isEmpty(totalArea?.value) || totalArea.value >= (kitchenArea && kitchenArea.value || 0) + (livingArea && livingArea.value || 0)",
+							"error": "Общая площадь должна быть больше жилой + кухни"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "totalArea",
+				"label": {
+					"text": "Общая площадь"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 12
+			},
+			{
+				"id": "paramsStep.livingAreaField",
+				"category": "field",
+				"conditions": {
+					"validity": [
+						{
+							"expression": "isEmpty(livingArea?.value) || livingArea.value > 0",
+							"error": "Жилая площадь должна быть больше 0"
+						},
+						{
+							"expression": "isEmpty(livingArea?.value) || livingArea.value < 100000",
+							"error": "Укажите площадь не больше 100 000 м²"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "livingArea",
+				"label": {
+					"text": "Жилая площадь"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 9
+			},
+			{
+				"id": "paramsStep.kitchenAreaField",
+				"category": "field",
+				"conditions": {
+					"validity": [
+						{
+							"expression": "isEmpty(kitchenArea?.value) || kitchenArea.value > 0",
+							"error": "Площадь кухни должна быть больше 0"
+						},
+						{
+							"expression": "isEmpty(kitchenArea?.value) || kitchenArea.value < 100000",
+							"error": "Укажите площадь не больше 100 000 м²"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "kitchenArea",
+				"label": {
+					"text": "Кухня"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 9
+			},
+			{
+				"id": "paramsStep.bedsCountField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "bedsCount",
+				"label": {
+					"text": "Всего спальных мест"
+				},
+				"maxLength": 2
+			},
+			{
+				"id": "paramsStep.roomsForSaleMultiRow.roomSquareField",
+				"category": "field",
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "roomArea",
+				"label": {
+					"text": "Площадь комнаты"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 9
+			},
+			{
+				"id": "paramsStep.roomsForSaleMultiRow.additionalRoomSquareField",
+				"category": "field",
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "roomArea",
+				"label": {
+					"text": "Площадь комнаты"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 9
+			}
+		],
+		"oneChoice": [
+			{
+				"id": "paramsStep.roomsCountField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Укажите, сколько комнат в квартире"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"code": "roomsCount",
+				"label": {
+					"text": "Всего комнат в квартире"
+				},
+				"style": "buttonGroup",
+				"source": [
+					{
+						"value": "one",
+						"label": "1"
+					},
+					{
+						"value": "two",
+						"label": "2"
+					},
+					{
+						"value": "three",
+						"label": "3"
+					},
+					{
+						"value": "four",
+						"label": "4"
+					},
+					{
+						"value": "five",
+						"label": "5"
+					},
+					{
+						"value": "six",
+						"label": "6+"
+					}
+				]
+			},
+			{
+				"id": "paramsStep.flatTypeField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Выберите тип недвижимости"
+						}
+					]
+				},
+				"margin": {
+					"top": 28
+				},
+				"code": "flatType",
+				"label": {
+					"text": "Тип недвижимости"
+				},
+				"style": "buttonGroup",
+				"source": [
+					{
+						"value": "flat",
+						"label": "Квартира"
+					},
+					{
+						"value": "apartments",
+						"label": "Апартаменты"
+					}
+				]
+			},
+			{
+				"id": "paramsStep.roomsForSaleMultiRow.additionalRoomIsolationTypeField",
+				"category": "field",
+				"margin": {
+					"top": 12
+				},
+				"code": "roomIsolation",
+				"label": {
+					"text": "Сдаётся комната"
+				},
+				"style": "buttonGroup",
+				"source": [
+					{
+						"value": "isolated",
+						"label": "Изолированная"
+					},
+					{
+						"value": "adjacent",
+						"label": "Смежная"
+					}
+				]
+			}
+		],
+		"typography": [
+			{
+				"id": "paramsStep.flatParamsTitle",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "paramsStep.flatParamsTitle.textElement1",
+							"breakAfter": false,
+							"text": "Параметры квартиры",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "paramsStep.flatParamsTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "desktopChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 52,
+					"bottom": 40
+				},
+				"source": {
+					"text": [
+						{
+							"id": "desktopChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "Сохраняем все заполненные поля",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "desktopChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "mobileChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 16,
+					"bottom": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "mobileChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "Сохраняем все заполненные поля",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "mobileChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			}
+		],
+		"accordion": [
+			{
+				"id": "paramsStep.howToTotalAreaAccordion",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"header": "Как правильно посчитать комнаты и площадь",
+				"paragraphs": [
+					{
+						"elements": [
+							{
+								"text": "Общая площадь",
+								"breakAfterText": false,
+								"styles": [
+									"bold"
+								]
+							},
+							{
+								"text": " — можно округлить до целого значения.",
+								"breakAfterText": false,
+								"styles": []
+							}
+						]
+					},
+					{
+						"elements": [
+							{
+								"text": "Количество комнат",
+								"breakAfterText": false,
+								"styles": [
+									"bold"
+								]
+							},
+							{
+								"text": " — все, кроме кухни, санузла, коридора, балкона/лоджии.",
+								"breakAfterText": true,
+								"styles": []
+							},
+							{
+								"text": "Если гостиная совмещена с кухней, то жилой считается только отдельная комната.",
+								"breakAfterText": true,
+								"styles": []
+							},
+							{
+								"text": "Например, «евродвушка» — формально однокомнатная. Для точности загляните в выписку из БТИ.",
+								"breakAfterText": false,
+								"styles": []
+							}
+						]
+					},
+					{
+						"elements": [
+							{
+								"text": "Жилая площадь",
+								"breakAfterText": false,
+								"styles": [
+									"bold"
+								]
+							},
+							{
+								"text": " — посчитайте площадь всех комнат, которые указали.",
+								"breakAfterText": false,
+								"styles": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "paramsStep.flatTypeDifferenceAccordion",
+				"category": "static",
+				"margin": {
+					"top": 20
+				},
+				"header": "Чем отличается квартира от апартаментов",
+				"paragraphs": [
+					{
+						"elements": [
+							{
+								"text": "Апартаменты юридически не считаются жилым помещением: проверьте статус в выписке из ЕГРН",
+								"breakAfterText": false,
+								"styles": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"delimiter": [
+			{
+				"id": "paramsStep.roomsForSaleMultiRow.additionalDelimiter",
+				"category": "static",
+				"margin": {
+					"top": 20
+				},
+				"flexProperties": {
+					"basis": "100%"
+				}
+			}
+		],
+		"multiRow": [
+			{
+				"id": "paramsStep.roomsForRentMultiRow",
+				"category": "field",
+				"margin": {
+					"top": 24,
+					"left": -24
+				},
+				"code": "roomsForDeal",
+				"rows": [
+					{
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "paramsStep.roomsForSaleMultiRow.roomSquareField",
+										"type": "number"
+									}
+								],
+								"flexbox": {
+									"columnGap": "117px",
+									"wrap": "wrap"
+								}
+							}
+						]
+					}
+				],
+				"isRowCollapsable": false,
+				"additionButton": {
+					"id": "paramsStep.multiRowAdditionButton",
+					"category": "button",
+					"margin": {
+						"left": 10
+					},
+					"text": "Добавить комнату",
+					"size": "small",
+					"theme": "fill_white_primary",
+					"fullWidth": false,
+					"additionalRow": {
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "paramsStep.roomsForSaleMultiRow.additionalDelimiter",
+										"type": "delimiter"
+									},
+									{
+										"id": "paramsStep.roomsForSaleMultiRow.additionalRoomIsolationTypeField",
+										"type": "oneChoice"
+									},
+									{
+										"id": "paramsStep.roomsForSaleMultiRow.additionalRoomSquareField",
+										"type": "number"
+									}
+								],
+								"flexbox": {
+									"columnGap": "117px",
+									"wrap": "wrap"
+								}
+							}
+						]
+					},
+					"visibilityCondition": {
+						"expression": "roomsForDeal?.length < {\"one\": 0, \"two\": 1, \"three\": 2, \"four\":3, \"five\": 4, \"studio\": 0}[roomsCount] || (roomsCount == \"six\")"
+					}
+				},
+				"deletionButton": {
+					"id": "paramsStep.multiRowDeletionButton",
+					"category": "button",
+					"text": "Удалить",
+					"size": "small",
+					"theme": "fill_secondary",
+					"fullWidth": false,
+					"beforeIcon": {
+						"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/trash.svg",
+						"width": 16,
+						"height": 16
+					},
+					"viewType": "content",
+					"visibilityCondition": {
+						"expression": "roomsForDeal?.length > 1"
+					}
+				}
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobilePreviousStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"xsHidden": false,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.flatParamsTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.roomsCountField",
+							"type": "oneChoice"
+						}
+					],
+					"flexbox": {
+						"columnGap": "40px",
+						"justify": "between",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 10,
+						"m": 12,
+						"l": 12
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.totalAreaField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"justify": "start",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "paramsStep.livingAreaField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"justify": "start",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.kitchenAreaField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"columnGap": "40px",
+						"justify": "between",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 10,
+						"l": 10
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.howToTotalAreaAccordion",
+							"type": "accordion"
+						}
+					],
+					"flexbox": {
+						"columnGap": "40px",
+						"wrap": "wrap"
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.roomsForRentMultiRow",
+							"type": "multiRow"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.bedsCountField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"columnGap": "40px",
+						"justify": "between",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 10,
+						"l": 10
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.flatTypeField",
+							"type": "oneChoice"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "paramsStep.flatTypeDifferenceAccordion",
+							"type": "accordion"
+						}
+					],
+					"flexbox": {
+						"columnGap": "40px",
+						"wrap": "wrap"
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "desktopChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 6,
+						"l": 6,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "desktopPreviousStepButton",
+							"type": "button"
+						},
+						{
+							"id": "desktopNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 5,
+						"l": 5,
+						"mOffset": 1,
+						"lOffset": 1,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "center"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "paramsStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "multiGeoSavedNextStep0",
+				"type": "multiGeoSavedNextStep"
+			},
+			{
+				"id": "undergroundSavedNextStep0",
+				"type": "undergroundSavedNextStep"
+			},
+			{
+				"id": "inputSavedNextStep0",
+				"type": "inputSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep0",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep1",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep2",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep3",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "newAd",
+					"action": "openStep",
+					"label": "newAddForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"numberSavedNextStep": [
+				{
+					"id": "numberSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "floorNumber",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": 2
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "numberSavedNextStep1",
+					"category": "newAd",
+					"action": "editField",
+					"label": "floorsCount",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": 9
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "numberSavedNextStep2",
+					"category": "newAd",
+					"action": "editField",
+					"label": "buildingYear",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": 2021
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "numberSavedNextStep3",
+					"category": "newAd",
+					"action": "editField",
+					"label": "ceilingHeight",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": 2.64,
+							"unit": "meters"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"inputSavedNextStep": [
+				{
+					"id": "inputSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "flatNumberStr",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": "12"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"multiGeoSavedNextStep": [
+				{
+					"id": "multiGeoSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "geoData",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": {
+								"address": "Россия, Свердловская область, Екатеринбург, улица Щербакова, 150",
+								"coordinates": {
+									"lat": 56.76644,
+									"lng": 60.671927
+								},
+								"undergroundId": 348
+							}
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"undergroundSavedNextStep": [
+				{
+					"id": "undergroundSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "underground",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": 348,
+							"isAutocomplete": true
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Чем больше параметров заполните — тем больше людей найдёт ваше объявление по таким фильтрам в поиске",
+							"breakAfterText": false,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "Расскажите о квартире",
+			"imageLink": "https://static.cdn-cian.ru/frontend/collections-assets/addform/advices/thinking.svg"
+		},
+		"progress": {
+			"header": "Аренда спального места",
+			"progress": 20,
+			"stepName": "Параметры квартиры"
+		},
+		"help": {
+			"title": "Нужна помощь с размещением?",
+			"successTitle": "Получили вашу заявку, скоро перезвоним",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Оставьте номер, скоро перезвоним — в будние дни с 9 до 18 по Москве. Пока ждёте звонка, попробуйте найти ответ в ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "справочном центре",
+						"link": "https://hc.cian.ru/hc/ru/sections/360013357872",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "Буду ждать!",
+			"confirmButtonText": "Позвоните мне",
+			"cancelButtonText": "Отмена",
+			"previewText": "Нужна помощь?"
+		}
+	},
+	"previousStepId": "geoStep",
+	"draftId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41"
+}

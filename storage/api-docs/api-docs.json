@@ -1,0 +1,950 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Закрытый API для системы управления перевозками",
+        "description": "API documentation for My Application",
+        "contact": {
+            "name": "API Support",
+            "url": "https://example.com/support",
+            "email": "andrew.izmaylov@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://transportation.test/public/api/v1/",
+            "description": "Local development server"
+        },
+        {
+            "url": "https://transportation.test/public/api/v1/",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/users/check-auth": {
+            "get": {
+                "tags": [
+                    "1. Authentication"
+                ],
+                "summary": "Get user's details",
+                "description": "Check current authenticated by sanctum token user",
+                "operationId": "25dc748256fd54142e6d7db1aeee3bb8",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users/get-token": {
+            "post": {
+                "tags": [
+                    "1. Authentication"
+                ],
+                "summary": "Obtain Sanctum token",
+                "description": "Get token for Registered User",
+                "operationId": "d102b1011b0d5878e9de6ad0593e7402",
+                "requestBody": {
+                    "description": "User object that needs to be created",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "john@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "secret123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token created successfully"
+                    },
+                    "401": {
+                        "description": "Authentication error"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/shipper/{transportation_id}/add-cargo": {
+            "post": {
+                "tags": [
+                    "4. Shipper - Карго"
+                ],
+                "summary": "Добавление груза",
+                "description": "Добавляет груз в доставку. Идентификатор перевозки передается в параметрах URI",
+                "operationId": "75a6a455a31b128da77f41ec0f5a0075",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Данные для добавления объекта груза",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "length",
+                                    "width",
+                                    "height",
+                                    "weight",
+                                    "price",
+                                    "currency"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Чемодан"
+                                    },
+                                    "length": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "width": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "height": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "weight": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "65000"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "example": "RUB"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cargo created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/{transportation_id}/{cargo_id}/delete-cargo": {
+            "delete": {
+                "tags": [
+                    "4. Shipper - Карго"
+                ],
+                "summary": "Удаление карго",
+                "description": "Удаляет карго из доставки. Идентификатор перевозки и карго передается в параметрах URI",
+                "operationId": "d9c5f270693cd556bc449ae950d6a36a",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "address_id",
+                        "in": "path",
+                        "description": "Address ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TransportationAddress deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/{transportation_id}/{cargo_id}/update-cargo": {
+            "patch": {
+                "tags": [
+                    "4. Shipper - Карго"
+                ],
+                "summary": "Изменение груза",
+                "description": "Изменяет данные груза. Идентификатор перевозки и адреса передается в параметрах URI",
+                "operationId": "18f669e76247d289dcaef6cc1080bedb",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cargo_id",
+                        "in": "path",
+                        "description": "Cargo ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Данные для обновления объекта карго",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Чемодан"
+                                    },
+                                    "length": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "width": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "height": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "weight": {
+                                        "type": "integer",
+                                        "example": "200"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "65000"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "example": "RUB"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cargo updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/{transportation_id}/add-transportation-address": {
+            "post": {
+                "tags": [
+                    "3. Shipper - Адрес"
+                ],
+                "summary": "Добавление адреса",
+                "description": "Регистрирует адрес забора/доставки для существующей перевозки. Заполняется отправителем груза. ID перевозки отправляется в URI",
+                "operationId": "faf07485249cdfd8f16dd4dd2a6f2358",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Данные для создания объекта адрес",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "alias",
+                                    "type",
+                                    "contact",
+                                    "city",
+                                    "addressLine1",
+                                    "phoneNumber"
+                                ],
+                                "properties": {
+                                    "alias": {
+                                        "type": "string",
+                                        "example": "Чемодан"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "delivery",
+                                            "pickup"
+                                        ],
+                                        "example": "delivery"
+                                    },
+                                    "contact": {
+                                        "type": "string",
+                                        "example": "Иванов Петр Александрович"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Москва"
+                                    },
+                                    "addressLine1": {
+                                        "type": "string",
+                                        "example": "улица Строителей дом 5"
+                                    },
+                                    "addressLine2": {
+                                        "type": "string",
+                                        "example": "квартира 34"
+                                    },
+                                    "addressLine3": {
+                                        "type": "string",
+                                        "example": "домофон 15"
+                                    },
+                                    "phoneNumber": {
+                                        "type": "string",
+                                        "example": "+79789658965"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "RU"
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "Необходимые пояснения"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "TransportationAddress created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/transportation/{transportation_id}": {
+            "get": {
+                "tags": [
+                    "2. Shipper - Перевозки"
+                ],
+                "summary": "Transportation",
+                "description": "Получение карточки перевозки по ID",
+                "operationId": "ae3f4fe9b8c3d873a56dbf4441143982",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Card found successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/transportation-list": {
+            "get": {
+                "tags": [
+                    "2. Shipper - Перевозки"
+                ],
+                "summary": "Transportation",
+                "description": "Получение списка перевозок для авторизованного Отправителя",
+                "operationId": "d76beaa64dc48357ea720e7186e88d89",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 20,
+                            "maximum": 100
+                        }
+                    },
+                    {
+                        "name": "with_trashed",
+                        "in": "query",
+                        "description": "Include trashed to list?",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List found successfully"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/register-transportation": {
+            "post": {
+                "tags": [
+                    "2. Shipper - Перевозки"
+                ],
+                "summary": "Создание заявки на перевозку",
+                "description": "Регистрирует заявку на перевозку от лица зарегистрированного пользователя",
+                "operationId": "3600f9cc301fe37b42db94c129c681f9",
+                "requestBody": {
+                    "description": "Данные для создания объекта перевозки",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "pickupFrom",
+                                    "pickupTo"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Москва - Дубай, лекарства"
+                                    },
+                                    "pickupFrom": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2026-01-14 12:00:00"
+                                    },
+                                    "pickupTo": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2026-02-14 12:00:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Transportation created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/{transportation_id}/{address_id}/update-transportation-address": {
+            "patch": {
+                "tags": [
+                    "3. Shipper - Адрес"
+                ],
+                "summary": "Изменение адреса",
+                "description": "Изменяет адрес забора или доставки. Идентификатор перевозки и адреса передается в параметрах URI",
+                "operationId": "d4cf03d1006d097adfec634187a8b4a2",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "address_id",
+                        "in": "path",
+                        "description": "Address ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Данные для обновления объекта адреса",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "alias": {
+                                        "type": "string",
+                                        "example": "Чемодан"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "delivery",
+                                            "pickup"
+                                        ],
+                                        "example": "delivery"
+                                    },
+                                    "contact": {
+                                        "type": "string",
+                                        "example": "Иванов Петр Александрович"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Москва"
+                                    },
+                                    "addressLine1": {
+                                        "type": "string",
+                                        "example": "улица Строителей дом 5"
+                                    },
+                                    "addressLine2": {
+                                        "type": "string",
+                                        "example": "квартира 34"
+                                    },
+                                    "addressLine3": {
+                                        "type": "string",
+                                        "example": "домофон 15"
+                                    },
+                                    "phoneNumber": {
+                                        "type": "string",
+                                        "example": "+79789658965"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "RU"
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "Необходимые пояснения"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "TransportationAddress updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/shipper/{transportation_id}/update-transportation": {
+            "patch": {
+                "tags": [
+                    "2. Shipper - Перевозки"
+                ],
+                "summary": "Изменение заявки на перевозку",
+                "description": "Изменяет заявку на перевозку. Идентификатор перевозки передается в параметрах URI",
+                "operationId": "fb08c39922be603c57ce88254e49c0f2",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Данные для обновления объекта перевозки",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Москва - Дубай, лекарства"
+                                    },
+                                    "pickupFrom": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2026-01-14 12:00:00"
+                                    },
+                                    "pickupTo": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2026-02-14 12:00:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Transportation updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/transportation/{transportation_id}": {
+            "get": {
+                "tags": [
+                    "Transportation"
+                ],
+                "summary": "Transportation",
+                "description": "Получение карточки перевозки по ID",
+                "operationId": "cbf25b8bfaedda238065b0486ae16937",
+                "parameters": [
+                    {
+                        "name": "transportation_id",
+                        "in": "path",
+                        "description": "Transportation ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Card found successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransportationCard"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/transportation": {
+            "get": {
+                "tags": [
+                    "Transportation"
+                ],
+                "summary": "Get list of all transportations",
+                "description": "Returns a paginated list of all transportations",
+                "operationId": "31369d05a7557f6f8c752598555ab832",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TransportationCard"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "TransportationCard": {
+                "required": [
+                    "id",
+                    "type",
+                    "attributes"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Transportation ID",
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "Transportation"
+                    },
+                    "attributes": {
+                        "required": [
+                            "id",
+                            "name",
+                            "clientId",
+                            "pickupFrom",
+                            "pickupTo",
+                            "transportationStatus"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "clientId": {
+                                "type": "string"
+                            },
+                            "pickupFrom": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2026-01-01 10:00:00"
+                            },
+                            "pickupTo": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2026-01-01 18:00:00"
+                            },
+                            "transportationStatus": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "1. Authentication",
+            "description": "1. Authentication"
+        },
+        {
+            "name": "4. Shipper - Карго",
+            "description": "4. Shipper - Карго"
+        },
+        {
+            "name": "3. Shipper - Адрес",
+            "description": "3. Shipper - Адрес"
+        },
+        {
+            "name": "2. Shipper - Перевозки",
+            "description": "2. Shipper - Перевозки"
+        },
+        {
+            "name": "Transportation",
+            "description": "Transportation"
+        }
+    ]
+}

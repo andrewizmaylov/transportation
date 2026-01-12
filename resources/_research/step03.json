@@ -1,0 +1,1220 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "mobilePreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Назад",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"beforeIcon": {
+					"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/blue-arrow.svg",
+					"width": 16,
+					"height": 14
+				},
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "newAd",
+						"action": "previousStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "photoStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopPreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40,
+					"left": 24
+				},
+				"text": "Назад",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "newAd",
+						"action": "previousStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "photoStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Дальше",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "newAd",
+						"action": "nextStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "photoStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Дальше",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "newAd",
+						"action": "nextStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "photoStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"number": [
+			{
+				"id": "stepPhoto.roomsForSaleMultiRow.roomSquareField",
+				"category": "field",
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "roomArea",
+				"value": {
+					"value": 16,
+					"unit": "squareMeters"
+				},
+				"label": {
+					"text": "Площадь комнаты"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 9
+			},
+			{
+				"id": "stepPhoto.roomsForSaleMultiRow.additionalRoomSquareField",
+				"category": "field",
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "roomArea",
+				"label": {
+					"text": "Площадь комнаты"
+				},
+				"units": {
+					"default": {
+						"value": "squareMeters",
+						"label": "м²"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 9
+			}
+		],
+		"oneChoice": [
+			{
+				"id": "stepPhoto.roomsForSaleMultiRow.additionalRoomIsolationTypeField",
+				"category": "field",
+				"margin": {
+					"top": 12
+				},
+				"code": "roomIsolation",
+				"label": {
+					"text": "Комната на продажу"
+				},
+				"style": "buttonGroup",
+				"source": [
+					{
+						"value": "isolated",
+						"label": "Изолированная"
+					},
+					{
+						"value": "adjacent",
+						"label": "Смежная"
+					}
+				]
+			}
+		],
+		"textarea": [
+			{
+				"id": "stepPhoto.videoUrlField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "500px"
+				},
+				"code": "videoLink",
+				"label": {
+					"text": "Ссылка на VK Видео"
+				},
+				"placeholder": "https://",
+				"minRows": 1,
+				"maxRows": 2
+			},
+			{
+				"id": "photoStep.virtualTourVideoUrlField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "447px"
+				},
+				"code": "virtualTourVideoLink",
+				"label": {
+					"text": "Ссылка на 3D-тур"
+				},
+				"placeholder": "https://",
+				"minRows": 1,
+				"maxRows": 2
+			}
+		],
+		"typography": [
+			{
+				"id": "stepPhoto.photoSubtitle",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "stepPhoto.photoSubtitle.textElement1",
+							"breakAfter": false,
+							"text": "Фото и планировка — от 5 и больше",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "stepPhoto.photoSubtitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "stepPhoto.photoWarningText",
+				"category": "static",
+				"margin": {
+					"top": 24
+				},
+				"source": {
+					"icon": [
+						{
+							"id": "stepPhoto.photoWarningText.iconElement1",
+							"breakAfter": false,
+							"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/photo-grey.svg",
+							"width": 14,
+							"height": 14
+						}
+					],
+					"text": [
+						{
+							"id": "stepPhoto.photoWarningText.textElement1",
+							"breakAfter": true,
+							"text": "На фото не должно быть людей, животных, алкоголя, табака, оружия.",
+							"style": "UIText3",
+							"color": "black_100"
+						},
+						{
+							"id": "stepPhoto.photoWarningText.textElement2",
+							"breakAfter": false,
+							"text": "Не добавляйте чужие фото, картинки с водяными знаками и рекламу.",
+							"style": "UIText3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "stepPhoto.photoWarningText.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "stepPhoto.photoWarningText.textElement2",
+						"type": "text"
+					}
+				],
+				"icon": {
+					"id": "stepPhoto.photoWarningText.iconElement1",
+					"type": "icon"
+				}
+			},
+			{
+				"id": "stepPhoto.videoSubtitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "stepPhoto.videoSubtitle.textElement1",
+							"breakAfter": false,
+							"text": "Видео",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "stepPhoto.videoSubtitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "stepPhoto.videoWarningText",
+				"category": "static",
+				"margin": {
+					"top": 24
+				},
+				"source": {
+					"icon": [
+						{
+							"id": "stepPhoto.videoWarningText.iconElement1",
+							"breakAfter": false,
+							"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/video-grey.svg",
+							"width": 14,
+							"height": 14
+						}
+					],
+					"text": [
+						{
+							"id": "stepPhoto.videoWarningText.textElement1",
+							"breakAfter": true,
+							"text": "На видео не должно быть людей, животных, алкоголя, табака, оружия.",
+							"style": "UIText3",
+							"color": "black_100"
+						},
+						{
+							"id": "stepPhoto.videoWarningText.textElement2",
+							"breakAfter": false,
+							"text": "Не добавляйте чужие записи, ролики с водяными знаками и рекламу.",
+							"style": "UIText3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "stepPhoto.videoWarningText.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "stepPhoto.videoWarningText.textElement2",
+						"type": "text"
+					}
+				],
+				"icon": {
+					"id": "stepPhoto.videoWarningText.iconElement1",
+					"type": "icon"
+				}
+			},
+			{
+				"id": "stepPhoto.videoUrlDescription",
+				"category": "static",
+				"flexProperties": {
+					"basis": "500px"
+				},
+				"source": {
+					"text": [
+						{
+							"id": "stepPhoto.videoUrlDescription.textElement1",
+							"breakAfter": false,
+							"text": "Настройте доступы к профилю и видео по ",
+							"style": "UIText3",
+							"color": "gray60_100"
+						},
+						{
+							"id": "stepPhoto.videoUrlDescription.textElement2",
+							"breakAfter": false,
+							"text": "и скопируйте ссылку ",
+							"style": "UIText3",
+							"color": "gray60_100"
+						},
+						{
+							"id": "stepPhoto.videoUrlDescription.textElement3",
+							"breakAfter": false,
+							"text": "из меню «Поделиться» под роликом",
+							"style": "UIText3",
+							"color": "gray60_100"
+						}
+					],
+					"link": [
+						{
+							"id": "stepPhoto.videoUrlDescription.linkElement1",
+							"breakAfter": false,
+							"text": "инструкции ",
+							"link": "https://support.cian.ru/ru/knowledge_base/art/7513/cat/23/",
+							"linkOptions": {
+								"noRef": true,
+								"noFollow": true,
+								"newTab": true
+							},
+							"style": "UIText3"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "stepPhoto.videoUrlDescription.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "stepPhoto.videoUrlDescription.linkElement1",
+						"type": "link"
+					},
+					{
+						"id": "stepPhoto.videoUrlDescription.textElement2",
+						"type": "text"
+					},
+					{
+						"id": "stepPhoto.videoUrlDescription.textElement3",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "photoStep.virtualTourTitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "photoStep.virtualTourTitle.textElement",
+							"breakAfter": true,
+							"text": "3D-тур",
+							"style": "UIHeading2",
+							"color": "black_100",
+							"isBold": false
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "photoStep.virtualTourTitle.textElement",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "desktopChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 52,
+					"bottom": 40
+				},
+				"source": {
+					"text": [
+						{
+							"id": "desktopChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "Сохраняем все заполненные поля",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "desktopChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "mobileChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 16,
+					"bottom": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "mobileChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "Сохраняем все заполненные поля",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "mobileChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "photoStep.virtualTourDifferenceAccordion",
+				"category": "static",
+				"margin": {
+					"left": -8
+				},
+				"flexProperties": {
+					"basis": "514px"
+				},
+				"source": {
+					"text": [
+						{
+							"id": "photoStep.virtualTourDifferenceAccordion.textElement1",
+							"breakAfter": true,
+							"text": "3D-тур — это интерактивный обзор недвижимости, по которому можно оценить интерьер и планировку",
+							"style": "UIText3",
+							"color": "black_100"
+						}
+					],
+					"link": [
+						{
+							"id": "photoStep.virtualTourDifferenceAccordion.linkElement1",
+							"breakAfter": false,
+							"text": "Подробнее",
+							"link": "https://promo.cian.site/3d_tours",
+							"linkOptions": {
+								"noRef": true,
+								"noFollow": true,
+								"newTab": true
+							},
+							"style": "UIText3"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "photoStep.virtualTourDifferenceAccordion.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "photoStep.virtualTourDifferenceAccordion.linkElement1",
+						"type": "link"
+					}
+				]
+			}
+		],
+		"photo": [
+			{
+				"id": "stepPhoto.photosField",
+				"category": "field",
+				"margin": {
+					"top": 16
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "photos",
+				"value": [],
+				"placeholder": "или перетащите их сюда JPG, PNG или GIF до 10 Мб каждый",
+				"buttonText": "Выберите файлы",
+				"dragNDropInfo": {
+					"text": "Перетащите фотографии сюда",
+					"icon": "https://static.cdn-cian.ru/frontend/collections-assets/addform/image.svg"
+				}
+			}
+		],
+		"video": [
+			{
+				"id": "photoStep.videosField",
+				"category": "field",
+				"margin": {
+					"top": 16
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "videos",
+				"value": [],
+				"placeholder": "или перетащите сюда"
+			}
+		],
+		"accordionV2": [
+			{
+				"id": "photoStep.accordionAdditionalParameters",
+				"category": "static",
+				"margin": {
+					"top": 12
+				},
+				"header": "Что такое 3D тур",
+				"rows": [
+					{
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "photoStep.virtualTourDifferenceAccordion",
+										"type": "typography"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"delimiter": [
+			{
+				"id": "stepPhoto.roomsForSaleMultiRow.additionalDelimiter",
+				"category": "static",
+				"margin": {
+					"top": 20
+				},
+				"flexProperties": {
+					"basis": "100%"
+				}
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobilePreviousStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"xsHidden": false,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.photoSubtitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.photoWarningText",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.photosField",
+							"type": "photo"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.videoSubtitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.videoWarningText",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "photoStep.videosField",
+							"type": "video"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.videoUrlField",
+							"type": "textarea"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "stepPhoto.videoUrlDescription",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "photoStep.virtualTourTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "photoStep.virtualTourVideoUrlField",
+							"type": "textarea"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "photoStep.accordionAdditionalParameters",
+							"type": "accordionV2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "desktopChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 6,
+						"l": 6,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "desktopPreviousStepButton",
+							"type": "button"
+						},
+						{
+							"id": "desktopNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 5,
+						"l": 5,
+						"mOffset": 1,
+						"lOffset": 1,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "center"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "photoStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "numberSavedNextStep0",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep1",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep2",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "numberSavedNextStep3",
+				"type": "numberSavedNextStep"
+			},
+			{
+				"id": "oneChoiceSavedNextStep0",
+				"type": "oneChoiceSavedNextStep"
+			},
+			{
+				"id": "oneChoiceSavedNextStep1",
+				"type": "oneChoiceSavedNextStep"
+			},
+			{
+				"id": "multiRowSavedNextStep0",
+				"type": "multiRowSavedNextStep"
+			},
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "newAd",
+					"action": "openStep",
+					"label": "newAddForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "photoStep",
+							"category": "bedRent"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"numberSavedNextStep": [
+				{
+					"id": "numberSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "totalArea",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": 84,
+							"unit": "squareMeters"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "numberSavedNextStep1",
+					"category": "newAd",
+					"action": "editField",
+					"label": "livingArea",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": 70,
+							"unit": "squareMeters"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "numberSavedNextStep2",
+					"category": "newAd",
+					"action": "editField",
+					"label": "kitchenArea",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": 12,
+							"unit": "squareMeters"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "numberSavedNextStep3",
+					"category": "newAd",
+					"action": "editField",
+					"label": "bedsCount",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": 2
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"oneChoiceSavedNextStep": [
+				{
+					"id": "oneChoiceSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "roomsCount",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": "three"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "oneChoiceSavedNextStep1",
+					"category": "newAd",
+					"action": "editField",
+					"label": "flatType",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": "flat"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"multiRowSavedNextStep": [
+				{
+					"id": "multiRowSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "roomsForDeal",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "paramsStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": false,
+							"value": [
+								{
+									"roomArea": {
+										"value": 16,
+										"unit": "squareMeters"
+									}
+								}
+							]
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Покажите на фото комнаты, санузел, кухню, вид из окна — так арендаторам проще представить квартиру",
+							"breakAfterText": false,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "С фото и планировкой больше просмотров!",
+			"imageLink": "https://static.cdn-cian.ru/frontend/collections-assets/addform/advices/photos.svg"
+		},
+		"progress": {
+			"header": "Аренда спального места",
+			"progress": 33,
+			"stepName": "Фотографии и планировка"
+		},
+		"help": {
+			"title": "Нужна помощь с размещением?",
+			"successTitle": "Получили вашу заявку, скоро перезвоним",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Оставьте номер, скоро перезвоним — в будние дни с 9 до 18 по Москве. Пока ждёте звонка, попробуйте найти ответ в ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "справочном центре",
+						"link": "https://hc.cian.ru/hc/ru/sections/360013357872",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "Буду ждать!",
+			"confirmButtonText": "Позвоните мне",
+			"cancelButtonText": "Отмена",
+			"previewText": "Нужна помощь?"
+		}
+	},
+	"previousStepId": "paramsStep",
+	"draftId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41"
+}

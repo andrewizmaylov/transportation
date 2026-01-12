@@ -1,0 +1,1050 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "geoStep.nextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Дальше",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "newAd",
+						"action": "nextStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "geoStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Дальше",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "newAd",
+						"action": "nextStepClick",
+						"label": "newAddForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "newAddForm",
+							"extra": {
+								"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+								"stepId": "geoStep",
+								"category": "bedRent"
+							}
+						},
+						"user": {
+							"userId": 138328945
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"number": [
+			{
+				"id": "geoStep.floorNumberField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Укажите этаж больше 0"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(floorNumber?.value) || floorNumber.value > 0",
+							"error": "Укажите этаж больше 0"
+						},
+						{
+							"expression": "isEmpty(floorsCount?.value) || isEmpty(floorNumber?.value) || floorNumber.value <= floorsCount.value",
+							"error": "Этаж должен быть меньше или равен количеству этажей"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "floorNumber",
+				"label": {
+					"text": "Этаж"
+				},
+				"maxLength": 3
+			},
+			{
+				"id": "geoStep.floorsCountField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Поле является обязательным"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(floorsCount?.value) || floorsCount.value > 0",
+							"error": "Количество этажей должно быть больше 0"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "floorsCount",
+				"label": {
+					"text": "Этажей в доме"
+				},
+				"maxLength": 3
+			},
+			{
+				"id": "geoStep.buildingYearField",
+				"category": "field",
+				"conditions": {
+					"validity": [
+						{
+							"expression": "isEmpty(buildingYear?.value) || buildingYear.value > 1772",
+							"error": "Укажите год позднее 1772"
+						},
+						{
+							"expression": "isEmpty(buildingYear?.value) || buildingYear.value < 2027",
+							"error": "Укажите год не позднее 2026"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "buildingYear",
+				"label": {
+					"text": "Год постройки"
+				},
+				"maxLength": 4
+			},
+			{
+				"id": "geoStep.ceilingHeightField",
+				"category": "field",
+				"conditions": {
+					"validity": [
+						{
+							"expression": "isEmpty(ceilingHeight?.value) || (ceilingHeight.value > 0 && ceilingHeight.value < 100)",
+							"error": "Высота потолков должна быть от 0 до 100 м"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "ceilingHeight",
+				"label": {
+					"text": "Высота потолков"
+				},
+				"units": {
+					"default": {
+						"value": "meters",
+						"label": "м"
+					}
+				},
+				"decimalDigits": 2,
+				"maxLength": 5
+			}
+		],
+		"oneChoice": [
+			{
+				"id": "geoStep.materialTypeField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"maxWidth": 263,
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "materialType",
+				"label": {
+					"text": "Тип дома"
+				},
+				"style": "buttonGroup",
+				"source": [
+					{
+						"value": "brick",
+						"label": "Кирпичный"
+					},
+					{
+						"value": "monolith",
+						"label": "Монолитный"
+					},
+					{
+						"value": "panel",
+						"label": "Панельный"
+					},
+					{
+						"value": "block",
+						"label": "Блочный"
+					},
+					{
+						"value": "wood",
+						"label": "Деревянный"
+					},
+					{
+						"value": "stalin",
+						"label": "Сталинский"
+					},
+					{
+						"value": "monolithBrick",
+						"label": "Монолитно-кирпичный"
+					}
+				]
+			}
+		],
+		"typography": [
+			{
+				"id": "geoStep.fillAddressTitle",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "geoStep.fillAddressTitle.textElement1",
+							"breakAfter": false,
+							"text": "Введите адрес",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "geoStep.fillAddressTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "geoStep.flatNumberWarningText",
+				"category": "static",
+				"margin": {
+					"top": 24
+				},
+				"source": {
+					"icon": [
+						{
+							"id": "geoStep.flatNumberWarningText.iconElement1",
+							"breakAfter": false,
+							"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/hide.svg",
+							"width": 14,
+							"height": 14
+						}
+					],
+					"text": [
+						{
+							"id": "geoStep.flatNumberWarningText.textElement1",
+							"breakAfter": false,
+							"text": "Не покажем номер квартиры в объявлении",
+							"style": "UIText1",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "geoStep.flatNumberWarningText.textElement1",
+						"type": "text"
+					}
+				],
+				"icon": {
+					"id": "geoStep.flatNumberWarningText.iconElement1",
+					"type": "icon"
+				}
+			},
+			{
+				"id": "geoStep.flatNumberWarningText2",
+				"category": "static",
+				"margin": {
+					"top": 24
+				},
+				"source": {
+					"icon": [
+						{
+							"id": "geoStep.flatNumberWarningText2.iconElement1",
+							"breakAfter": false,
+							"link": "https://static.cdn-cian.ru/frontend/collections-assets/addform/hide.svg",
+							"width": 14,
+							"height": 14
+						}
+					],
+					"text": [
+						{
+							"id": "geoStep.flatNumberWarningText2.textElement1",
+							"breakAfter": true,
+							"text": "Не покажем номер квартиры",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "geoStep.flatNumberWarningText2.textElement2",
+							"breakAfter": false,
+							"text": "в объявлении",
+							"style": "UIText1",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "geoStep.flatNumberWarningText2.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "geoStep.flatNumberWarningText2.textElement2",
+						"type": "text"
+					}
+				],
+				"icon": {
+					"id": "geoStep.flatNumberWarningText2.iconElement1",
+					"type": "icon"
+				}
+			},
+			{
+				"id": "geoStep.aboutBuildingTitle",
+				"category": "static",
+				"margin": {
+					"top": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "geoStep.aboutBuildingTitle.textElement1",
+							"breakAfter": false,
+							"text": "О здании",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "geoStep.aboutBuildingTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "geoStep.changesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 52,
+					"bottom": 40
+				},
+				"source": {
+					"text": [
+						{
+							"id": "geoStep.changesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "Сохраняем все заполненные поля",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "geoStep.changesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "mobileChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 16,
+					"bottom": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "mobileChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "Сохраняем все заполненные поля",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "mobileChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			}
+		],
+		"multiGeo": [
+			{
+				"id": "geoStep.addressField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Поле является обязательным"
+						}
+					],
+					"editability": [
+						{
+							"expression": "true"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "geoData",
+				"callbacks": {
+					"onChange": {
+						"type": "updateClientState",
+						"callbackId": "get_bti_data"
+					}
+				},
+				"label": {
+					"text": "Редактировать адрес можно в течение 2 дней после публикации"
+				},
+				"params": {
+					"undergrounds": [],
+					"zoomLevel": 13,
+					"suggestSchema": {
+						"address": 5
+					},
+					"showDefaultUndergroundChoice": true
+				},
+				"placeholder": "Укажите улицу и номер дома"
+			}
+		],
+		"banner": [
+			{
+				"id": "geoStep.setAsSpecialistBanner",
+				"category": "static",
+				"margin": {
+					"top": 20
+				},
+				"button": {
+					"text": "Я — агент",
+					"actions": {
+						"callAction": {
+							"actionId": "set_user_as_specialist",
+							"successMessage": "Успешно сменили тип аккаунта на агентский",
+							"errorMessage": "Не удалось сменить тип аккаунта на агентский"
+						}
+					},
+					"theme": "fill_white_primary",
+					"eventMapping": {
+						"click": {
+							"id": "changeAccountClick",
+							"category": "newAd",
+							"action": "changeAccountClick",
+							"label": "newAddForm",
+							"page": {
+								"siteType": "desktop",
+								"pageType": "newAddForm",
+								"extra": {
+									"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+									"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+									"stepId": "geoStep",
+									"category": "bedRent",
+									"source": "publishAsAnOwner"
+								}
+							},
+							"user": {
+								"userId": 138328945
+							},
+							"shouldEnrich": false
+						}
+					}
+				},
+				"title": "Вы размещаете объявление как собственник",
+				"canClose": true,
+				"closeOnSuccess": true,
+				"description": [
+					{
+						"elements": [
+							{
+								"text": "Если вы работаете на рынке недвижимости — сообщите нам",
+								"breakAfterText": true,
+								"styles": []
+							},
+							{
+								"text": "и получите доступ к профессиональным инструментам",
+								"breakAfterText": false,
+								"styles": []
+							}
+						]
+					}
+				],
+				"backgroundColor": "primary_100",
+				"textColor": "white_100",
+				"confirmationModal": {
+					"title": "Хотите сменить тип аккаунта?",
+					"description": "Вернуться на аккаунт собственника не получится",
+					"confirmationButtonText": "Сменить",
+					"confirmationButtonEventMapping": {
+						"click": {
+							"id": "confirmChangeAccountClick",
+							"category": "newAd",
+							"action": "confirmChangeAccountClick",
+							"label": "newAddForm",
+							"page": {
+								"siteType": "desktop",
+								"pageType": "newAddForm",
+								"extra": {
+									"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+									"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+									"stepId": "geoStep",
+									"category": "bedRent"
+								}
+							},
+							"user": {
+								"userId": 138328945
+							},
+							"shouldEnrich": false
+						}
+					}
+				}
+			}
+		],
+		"input": [
+			{
+				"id": "geoStep.flatNumberStrField",
+				"category": "field",
+				"conditions": {
+					"validity": [
+						{
+							"expression": "flatNumberStr > 0 || (/^$|^(?!-?\\d+$)(?=.*[A-Za-zА-Яа-яЁё\\/\\-\\\"'.,«»])[A-Za-zА-Яа-яЁё0-9\\s\\/\\-\\\"'.,«»]+$/).test(flatNumberStr)",
+							"error": "Укажите корректный номер квартиры"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "200px"
+				},
+				"code": "flatNumberStr",
+				"label": {
+					"text": "Номер квартиры"
+				},
+				"maxLength": 10
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.fillAddressTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.setAsSpecialistBanner",
+							"type": "banner"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.addressField",
+							"type": "multiGeo"
+						}
+					],
+					"gridPosition": {
+						"xs": 12
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.floorNumberField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"justify": "start",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 5,
+						"l": 5
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "geoStep.floorsCountField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"justify": "end",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 5,
+						"l": 5
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.flatNumberStrField",
+							"type": "input"
+						}
+					],
+					"flexbox": {
+						"justify": "start",
+						"wrap": "wrap"
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.flatNumberWarningText",
+							"type": "typography"
+						}
+					],
+					"gridPosition": {
+						"xs": 0,
+						"m": 12,
+						"l": 12,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "geoStep.flatNumberWarningText2",
+							"type": "typography"
+						}
+					],
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.aboutBuildingTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.buildingYearField",
+							"type": "number"
+						},
+						{
+							"id": "geoStep.ceilingHeightField",
+							"type": "number"
+						}
+					],
+					"flexbox": {
+						"columnGap": "40px",
+						"justify": "between",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 10,
+						"m": 10,
+						"l": 10
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.materialTypeField",
+							"type": "oneChoice"
+						}
+					],
+					"gridPosition": {
+						"xs": 12,
+						"m": 9,
+						"l": 9
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "geoStep.changesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 6,
+						"l": 6,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "geoStep.nextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 5,
+						"l": 5,
+						"mOffset": 1,
+						"lOffset": 1,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "center"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "geoStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "oneChoiceSavedNextStep0",
+				"type": "oneChoiceSavedNextStep"
+			},
+			{
+				"id": "oneChoiceSavedNextStep1",
+				"type": "oneChoiceSavedNextStep"
+			},
+			{
+				"id": "oneChoiceSavedNextStep2",
+				"type": "oneChoiceSavedNextStep"
+			},
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "newAd",
+					"action": "openStep",
+					"label": "newAddForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "geoStep",
+							"category": "bedRent"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			],
+			"oneChoiceSavedNextStep": [
+				{
+					"id": "oneChoiceSavedNextStep0",
+					"category": "newAd",
+					"action": "editField",
+					"label": "dealType",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "categoryChoiceStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": "rent"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "oneChoiceSavedNextStep1",
+					"category": "newAd",
+					"action": "editField",
+					"label": "rentType",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "categoryChoiceStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": "long"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				},
+				{
+					"id": "oneChoiceSavedNextStep2",
+					"category": "newAd",
+					"action": "editField",
+					"label": "residentialRentObject",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "newAddForm",
+						"extra": {
+							"formId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"newFormId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41",
+							"stepId": "categoryChoiceStep",
+							"category": "bedRent",
+							"isEmpty": false,
+							"isRequired": true,
+							"value": "bed"
+						}
+					},
+					"user": {
+						"userId": 138328945
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Напишите без сокращений улицу и номер дома. Выберите полный адрес из подсказки или подвиньте метку на карте.",
+							"breakAfterText": true,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "Давайте начнём!",
+			"imageLink": "https://static.cdn-cian.ru/frontend/collections-assets/addform/advices/map.svg"
+		},
+		"progress": {
+			"header": "Аренда спального места",
+			"progress": 9,
+			"stepName": "Расположение"
+		},
+		"help": {
+			"title": "Нужна помощь с размещением?",
+			"successTitle": "Получили вашу заявку, скоро перезвоним",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Оставьте номер, скоро перезвоним — в будние дни с 9 до 18 по Москве. Пока ждёте звонка, попробуйте найти ответ в ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "справочном центре",
+						"link": "https://hc.cian.ru/hc/ru/sections/360013357872",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "Буду ждать!",
+			"confirmButtonText": "Позвоните мне",
+			"cancelButtonText": "Отмена",
+			"previewText": "Нужна помощь?"
+		}
+	},
+	"draftId": "76ab8d6d-a21e-4017-9de2-28d3209fcc41"
+}

@@ -1,0 +1,1179 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "mobilePreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Back",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"beforeIcon": {
+					"link": "",
+					"width": 16,
+					"height": 14
+				},
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "transportation",
+						"action": "previousStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "cargoStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopPreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Back",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "transportation",
+						"action": "previousStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "cargoStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Next",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "transportation",
+						"action": "nextStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "cargoStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Next",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "transportation",
+						"action": "nextStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "cargoStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"input": [
+			{
+				"id": "cargoStep.cargosMultiRow.cargoNameField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Cargo name is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(name?.value) || name.value.length >= 2",
+							"error": "Name must be at least 2 characters"
+						},
+						{
+							"expression": "isEmpty(name?.value) || name.value.length <= 255",
+							"error": "Name must not exceed 255 characters"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "name",
+				"label": {
+					"text": "Cargo Name"
+				},
+				"placeholder": "Enter cargo name",
+				"maxLength": 255
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoNameField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Cargo name is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(name?.value) || name.value.length >= 2",
+							"error": "Name must be at least 2 characters"
+						},
+						{
+							"expression": "isEmpty(name?.value) || name.value.length <= 255",
+							"error": "Name must not exceed 255 characters"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "name",
+				"label": {
+					"text": "Cargo Name"
+				},
+				"placeholder": "Enter cargo name",
+				"maxLength": 255
+			}
+		],
+		"number": [
+			{
+				"id": "cargoStep.cargosMultiRow.cargoLengthField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Length is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(length?.value) || length.value > 0",
+							"error": "Length must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(length?.value) || length.value <= 10000",
+							"error": "Length must not exceed 10000 cm"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "length",
+				"label": {
+					"text": "Length"
+				},
+				"units": {
+					"default": {
+						"value": "centimeters",
+						"label": "cm"
+					}
+				},
+				"maxLength": 5
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.cargoWidthField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Width is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(width?.value) || width.value > 0",
+							"error": "Width must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(width?.value) || width.value <= 10000",
+							"error": "Width must not exceed 10000 cm"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "width",
+				"label": {
+					"text": "Width"
+				},
+				"units": {
+					"default": {
+						"value": "centimeters",
+						"label": "cm"
+					}
+				},
+				"maxLength": 5
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.cargoHeightField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Height is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(height?.value) || height.value > 0",
+							"error": "Height must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(height?.value) || height.value <= 10000",
+							"error": "Height must not exceed 10000 cm"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "height",
+				"label": {
+					"text": "Height"
+				},
+				"units": {
+					"default": {
+						"value": "centimeters",
+						"label": "cm"
+					}
+				},
+				"maxLength": 5
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.cargoWeightField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Weight is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(weight?.value) || weight.value > 0",
+							"error": "Weight must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(weight?.value) || weight.value <= 100000",
+							"error": "Weight must not exceed 100000 kg"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "weight",
+				"label": {
+					"text": "Weight"
+				},
+				"units": {
+					"default": {
+						"value": "kilograms",
+						"label": "kg"
+					}
+				},
+				"maxLength": 6
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.cargoPriceField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Price is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(price?.value) || price.value > 0",
+							"error": "Price must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(price?.value) || price.value <= 999999999",
+							"error": "Price must not exceed 999999999"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "price",
+				"label": {
+					"text": "Price"
+				},
+				"maxLength": 10
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoLengthField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Length is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(length?.value) || length.value > 0",
+							"error": "Length must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(length?.value) || length.value <= 10000",
+							"error": "Length must not exceed 10000 cm"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "length",
+				"label": {
+					"text": "Length"
+				},
+				"units": {
+					"default": {
+						"value": "centimeters",
+						"label": "cm"
+					}
+				},
+				"maxLength": 5
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoWidthField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Width is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(width?.value) || width.value > 0",
+							"error": "Width must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(width?.value) || width.value <= 10000",
+							"error": "Width must not exceed 10000 cm"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "width",
+				"label": {
+					"text": "Width"
+				},
+				"units": {
+					"default": {
+						"value": "centimeters",
+						"label": "cm"
+					}
+				},
+				"maxLength": 5
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoHeightField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Height is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(height?.value) || height.value > 0",
+							"error": "Height must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(height?.value) || height.value <= 10000",
+							"error": "Height must not exceed 10000 cm"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "height",
+				"label": {
+					"text": "Height"
+				},
+				"units": {
+					"default": {
+						"value": "centimeters",
+						"label": "cm"
+					}
+				},
+				"maxLength": 5
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoWeightField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Weight is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(weight?.value) || weight.value > 0",
+							"error": "Weight must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(weight?.value) || weight.value <= 100000",
+							"error": "Weight must not exceed 100000 kg"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "weight",
+				"label": {
+					"text": "Weight"
+				},
+				"units": {
+					"default": {
+						"value": "kilograms",
+						"label": "kg"
+					}
+				},
+				"maxLength": 6
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoPriceField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Price is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(price?.value) || price.value > 0",
+							"error": "Price must be greater than 0"
+						},
+						{
+							"expression": "isEmpty(price?.value) || price.value <= 999999999",
+							"error": "Price must not exceed 999999999"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "price",
+				"label": {
+					"text": "Price"
+				},
+				"maxLength": 10
+			}
+		],
+		"select": [
+			{
+				"id": "cargoStep.cargosMultiRow.cargoCurrencyField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Currency is required"
+						}
+					]
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "currency",
+				"label": {
+					"text": "Currency"
+				},
+				"placeholder": "Select currency",
+				"source": "currencies",
+				"optionsKey": "code",
+				"optionsLabel": "code"
+			},
+			{
+				"id": "cargoStep.cargosMultiRow.additionalCargoCurrencyField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Currency is required"
+						}
+					]
+				},
+				"margin": {
+					"top": 12
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "currency",
+				"label": {
+					"text": "Currency"
+				},
+				"placeholder": "Select currency",
+				"source": "currencies",
+				"optionsKey": "code",
+				"optionsLabel": "code"
+			}
+		],
+		"typography": [
+			{
+				"id": "cargoStep.title",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "cargoStep.title.textElement1",
+							"breakAfter": false,
+							"text": "Cargo Information",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "cargoStep.title.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "cargoStep.description",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"source": {
+					"text": [
+						{
+							"id": "cargoStep.description.textElement1",
+							"breakAfter": false,
+							"text": "Add one or more cargos to your transportation. All cargos must use the same pickup and delivery addresses.",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "cargoStep.description.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "desktopChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 52,
+					"bottom": 40
+				},
+				"source": {
+					"text": [
+						{
+							"id": "desktopChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "All filled fields are saved automatically",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "desktopChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "mobileChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 16,
+					"bottom": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "mobileChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "All filled fields are saved automatically",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "mobileChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			}
+		],
+		"delimiter": [
+			{
+				"id": "cargoStep.cargosMultiRow.additionalDelimiter",
+				"category": "static",
+				"margin": {
+					"top": 20
+				},
+				"flexProperties": {
+					"basis": "100%"
+				}
+			}
+		],
+		"multiRow": [
+			{
+				"id": "cargoStep.cargosMultiRow",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "At least one cargo is required"
+						}
+					],
+					"validity": [
+						{
+							"expression": "isEmpty(cargos?.value) || cargos.value.length > 0",
+							"error": "At least one cargo must be added"
+						}
+					]
+				},
+				"margin": {
+					"top": 24,
+					"left": -24
+				},
+				"code": "cargos",
+				"rows": [
+					{
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "cargoStep.cargosMultiRow.cargoNameField",
+										"type": "input"
+									}
+								],
+								"gridPosition": {
+									"xs": 12
+								}
+							}
+						]
+					},
+					{
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "cargoStep.cargosMultiRow.cargoLengthField",
+										"type": "number"
+									},
+									{
+										"id": "cargoStep.cargosMultiRow.cargoWidthField",
+										"type": "number"
+									},
+									{
+										"id": "cargoStep.cargosMultiRow.cargoHeightField",
+										"type": "number"
+									},
+									{
+										"id": "cargoStep.cargosMultiRow.cargoWeightField",
+										"type": "number"
+									}
+								],
+								"flexbox": {
+									"direction": "col-row",
+									"columnGap": "16px",
+									"wrap": "wrap"
+								},
+								"gridPosition": {
+									"xs": 6
+								}
+							}
+						]
+					},
+					{
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "cargoStep.cargosMultiRow.cargoPriceField",
+										"type": "number"
+									},
+									{
+										"id": "cargoStep.cargosMultiRow.cargoCurrencyField",
+										"type": "select"
+									}
+								],
+								"flexbox": {
+									"columnGap": "16px",
+									"wrap": "wrap"
+								},
+								"gridPosition": {
+									"xs": 12
+								}
+							}
+						]
+					}
+				],
+				"isRowCollapsable": false,
+				"additionButton": {
+					"id": "cargoStep.multiRowAdditionButton",
+					"category": "button",
+					"margin": {
+						"left": 10
+					},
+					"text": "Add Cargo",
+					"size": "small",
+					"theme": "fill_white_primary",
+					"fullWidth": false,
+					"additionalRow": {
+						"columns": [
+							{
+								"components": [
+									{
+										"id": "cargoStep.cargosMultiRow.additionalDelimiter",
+										"type": "delimiter"
+									},
+									{
+										"id": "cargoStep.cargosMultiRow.additionalCargoNameField",
+										"type": "input"
+									}
+								],
+								"gridPosition": {
+									"xs": 12
+								}
+							},
+							{
+								"columns": [
+									{
+										"components": [
+											{
+												"id": "cargoStep.cargosMultiRow.additionalCargoLengthField",
+												"type": "number"
+											},
+											{
+												"id": "cargoStep.cargosMultiRow.additionalCargoWidthField",
+												"type": "number"
+											},
+											{
+												"id": "cargoStep.cargosMultiRow.additionalCargoHeightField",
+												"type": "number"
+											},
+											{
+												"id": "cargoStep.cargosMultiRow.additionalCargoWeightField",
+												"type": "number"
+											}
+										],
+										"flexbox": {
+											"columnGap": "16px",
+											"wrap": "wrap"
+										},
+										"gridPosition": {
+											"xs": 12
+										}
+									}
+								]
+							},
+							{
+								"columns": [
+									{
+										"components": [
+											{
+												"id": "cargoStep.cargosMultiRow.additionalCargoPriceField",
+												"type": "number"
+											},
+											{
+												"id": "cargoStep.cargosMultiRow.additionalCargoCurrencyField",
+												"type": "select"
+											}
+										],
+										"flexbox": {
+											"columnGap": "16px",
+											"wrap": "wrap"
+										},
+										"gridPosition": {
+											"xs": 12
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				"deletionButton": {
+					"id": "cargoStep.multiRowDeletionButton",
+					"category": "button",
+					"text": "Remove",
+					"size": "small",
+					"theme": "fill_secondary",
+					"fullWidth": false,
+					"beforeIcon": {
+						"link": "",
+						"width": 16,
+						"height": 16
+					},
+					"viewType": "content",
+					"visibilityCondition": {
+						"expression": "cargos?.length > 1"
+					}
+				}
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobilePreviousStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"xsHidden": false,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "cargoStep.title",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "cargoStep.description",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "cargoStep.cargosMultiRow",
+							"type": "multiRow"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "desktopChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 6,
+						"l": 6,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "desktopPreviousStepButton",
+							"type": "button"
+						},
+						{
+							"id": "desktopNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 5,
+						"l": 5,
+						"mOffset": 1,
+						"lOffset": 1,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "center"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "cargoStep",
+	"previousStepId": "deliveryAddressStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "transportation",
+					"action": "openStep",
+					"label": "createTransportationForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "createTransportationForm",
+						"extra": {
+							"formId": "",
+							"stepId": "cargoStep"
+						}
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Provide accurate dimensions and weight for each cargo. This helps carriers determine the appropriate vehicle and calculate costs correctly.",
+							"breakAfterText": false,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "Cargo Details",
+			"imageLink": "step4.png"
+		},
+		"progress": {
+			"header": "Create Transportation",
+			"progress": 60,
+			"stepName": "Cargo Information"
+		},
+		"help": {
+			"title": "Need help?",
+			"successTitle": "We received your request, we'll call you soon",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Leave your phone number, we'll call you back soon — on weekdays from 9 to 18. While waiting, try to find an answer in the ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "help center",
+						"link": "#",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "I'll wait!",
+			"confirmButtonText": "Call me",
+			"cancelButtonText": "Cancel",
+			"previewText": "Need help?"
+		}
+	},
+	"draftId": ""
+}

@@ -1,0 +1,428 @@
+openapi: 3.0.0
+info:
+  title: SUP API система управления перевозками
+  description: |
+    Внешний API создания и управления заявками на перевозку грузов. 
+    Обращение происходит по протоколу `HTTPS`.
+    
+    Авторизация осуществляется через указание токена в HTTP заголовке `Bearer YOUR_TOKEN`. 
+    Токен для авторизации генерируется индивидуально.
+
+
+    Список возможных HTTP кодов ответа:
+
+    - **200** Запрос успешно обработан
+
+    - **401** Неавторизованный доступ.
+
+    - **404** Метод/Объект не найден.
+
+    - **422** Ошибка входных данных
+
+    - **500** Внутренняя ошибка сервера во время выполнения запроса.
+
+    Все ответы соответствуют спецификации [JSON Specification](https://jsonapi.org).
+  version: 0.0.1
+  contact:
+    name: API Support
+    url: https://m-flowers.com/support
+    email: andrew.izmaylov@gmail.com
+
+servers:
+  - url: https://transportation.test/public/api/v1/
+    description: Локальный сервер
+
+tags:
+  - name: Перевозки
+    description: Операции создания перевозок, управление адресами, добавление грузов
+  - name: Ставки перевозчиков
+    description: Интерактивное подтверждение участия в заявке
+
+paths:
+  /transportation:
+    get:
+      summary: Получить список всех перевозок
+      description: Возвращает список перевозок.
+      operationId: getTransportationsList
+      tags:
+        - Справочники
+      responses:
+        '200':
+          description: Успешный ответ со списком перевозок
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/FlowerColorList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /transportation/{id}:
+    get:
+      summary: Получение информации по выбранной перевозке
+      description: Возвращает полную информацию по перевозке. Принимает идентификатор перевозки в качестве параметра пути.
+      operationId: getTransportationInfo
+      tags:
+        - Справочники
+      parameters:
+        - name: id
+          in: path
+          description: Идентификатор перевозки
+          required: true
+          schema:
+            type: string
+            example: 3644
+      responses:
+        '200':
+          description: Успешный ответ с информацией по перевозке
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TransportationCard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /shipper:
+    post:
+      summary: Создание нового заказа
+      description: Создает новый заказ с указанными параметрами цветов, количества, логистики и ценообразования.
+      operationId: createOrder
+      tags:
+        - Заказы
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+      responses:
+        '201':
+          description: Заказ успешно создан
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorObject'
+      required:
+        - errors
+
+    ErrorObject:
+      type: object
+      properties:
+        status:
+          type: string
+          description: HTTP статус код ошибки в виде строки
+          example: "401"
+        code:
+          type: string
+          description: Код ошибки (опционально)
+          example: "401"
+        title:
+          type: string
+          description: Краткое, читаемое человеком summary ошибки
+          example: Неавторизованный доступ
+        detail:
+          type: string
+          description: Читаемое человеком объяснение конкретной ошибки
+          example: Неавторизованный доступ. Требуется действительный токен авторизации.
+        source:
+          type: object
+          description: Объект, указывающий на источник ошибки (опционально)
+          properties:
+            pointer:
+              type: string
+              description: JSON Pointer к значению в запросе, вызвавшему ошибку
+              example: /data/attributes/title
+            parameter:
+              type: string
+              description: Указание на параметр запроса, вызвавший ошибку
+              example: filter
+            header:
+              type: string
+              description: Название заголовка запроса, вызвавшего ошибку
+              example: Authorization
+
+    MetaPagination:
+      type: object
+      description: Пагинация
+      properties:
+        totalRecords:
+          type: integer
+          description: Общее количество записей
+          example: 224
+        perPage:
+          type: integer
+          description: Количество записей на страницу
+          example: 4
+        currentPage:
+          type: integer
+          description: Текущая страница
+          example: 1
+        lastPage:
+          type: integer
+          description: Последняя страница
+          example: 56
+      required:
+        - totalRecords
+        - perPage
+        - currentPage
+        - lastPage
+
+    TransportationAddressTypes:
+      type: string
+      description: |
+        Идентификатор категории
+        * `1` - Цветы
+        * `2` - Упаковка
+        * `3` - Растения
+        * `4` - Зелень
+      enum: ['pickup', 'delivery']
+      example: 'pickup'
+
+    TransportationCard:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор перевозки UUID V7
+          example: 019b980c-40f1-7292-9d0c-0c97a44a57fc
+        type:
+          type: string
+          description: Тип ресурса
+          example: Transportation
+        attributes:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Уникальный идентификатор перевозки UUID V7
+              example: 019b980c-40f1-7292-9d0c-0c97a44a57fc
+            name:
+              type: string
+              description: Название цвета перевозки
+              example: Москва - Екатеринбург. Гвозди
+            client_id:
+              type: string
+              description: ID зарегистрированного в системе пользователя, заявителя перевозки
+              example: 019b980c-40f1-7292-9d0c-0c97a44a57fc
+            pickup_from:
+              type: string
+              description: Начало интервала для забора груза
+              example: 2026-01-01 10:00:00
+            pickup_to:
+              type: string
+              description: Конец интервала для забора груза
+              example: 2026-01-01 15:20:00
+            pickup_address:
+              type: object
+              description: Объект с данными по адресу забора груза
+              example: 2026-01-01 15:20:00
+          required:
+            - id
+            - name
+            - client_id
+            - pickup_from
+            - pickup_to
+            - pickup_address
+            - delivery_address
+      required:
+        - id
+        - type
+        - attributes
+
+
+
+    FlowerColorList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowerColor'
+      required:
+        - data
+
+    FlowerColor:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Уникальный идентификатор цвета цветка
+          example: 1
+        type:
+          type: string
+          description: Тип ресурса
+          example: FlowerColor
+        attributes:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Название цвета цветка
+              example: multicolor
+          required:
+            - id
+            - title
+      required:
+        - id
+        - type
+        - attributes
+
+    Country:
+      type: object
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          type: string
+          enum: [ Country ]
+          description: Тип объекта, всегда "Country".
+        attributes:
+          type: object
+          required:
+            - code
+            - name
+            - alpha2
+            - alpha3
+            - isManufacturer
+          properties:
+            code:
+              type: integer
+              description: Уникальный код страны.
+              example: 31
+            name:
+              type: object
+              description: Название страны на разных языках.
+              properties:
+                ru:
+                  type: string
+                  description: Название на русском языке.
+                  example: Азербайджан
+                en:
+                  type: string
+                  description: Название на английском языке.
+                  example: Azerbaijan
+                es:
+                  type: string
+                  description: Название на испанском языке.
+                  example: Azerbaiyán
+            alpha2:
+              type: string
+              description: Двухбуквенный код страны (ISO 3166-1 alpha-2).
+              example: AZ
+            alpha3:
+              type: string
+              description: Трёхбуквенный код страны (ISO 3166-1 alpha-3).
+              example: AZE
+            isManufacturer:
+              type: boolean
+              description: Указывает, является ли страна производителем.
+              example: false
+    CountryList:
+      type: object
+      required:
+        - data
+        - meta
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Country'
+        meta:
+          $ref: '#/components/schemas/MetaPagination'
+
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Номер страницы для пагинации
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+        example: 1
+
+    PerPage:
+      name: perPage
+      in: query
+      description: Количество записей на страницу
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 20
+        example: 15
+
+  responses:
+    Unauthorized:
+      description: Неавторизованный доступ
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - title: Неавторизованный запрос.
+                detail: Неавторизованный запрос. Требуется действительный токен авторизации.
+    NotFound:
+      description: Ресурс не найден
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - title: Ресурс не найден
+                detail: Запрошенный ресурс не найден.
+    UnprocessableEntity:
+      description: Неверный запрос
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - title: Ошибка валидации.
+                detail: Значение perPage должно быть числом.
+                source:
+                  pointer: perPage
+    InternalServerError:
+      description: Внутренняя ошибка сервера
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - title: Ошибка сервера.
+                detail: При получение списка произошла непредвиденная ошибка.
+
+  securitySchemes:
+    Bearer:
+      type: Sanctum Token
+      name: Bearer
+      in: header
+      description: Ключ авторизации, передаваемый в заголовке Bearer.
+security:
+  - Bearer: []

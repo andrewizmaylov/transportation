@@ -1,0 +1,711 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "mobilePreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Back",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"beforeIcon": {
+					"link": "",
+					"width": 16,
+					"height": 14
+				},
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "transportation",
+						"action": "previousStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "pickupAddressStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopPreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Back",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "transportation",
+						"action": "previousStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "pickupAddressStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Next",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "transportation",
+						"action": "nextStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "pickupAddressStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileNextStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Next",
+				"actionType": "nextStep",
+				"size": "medium",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "nextStepClick",
+						"category": "transportation",
+						"action": "nextStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "pickupAddressStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"input": [
+			{
+				"id": "pickupAddressStep.pickupAliasField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "300px"
+				},
+				"code": "pickupAlias",
+				"label": {
+					"text": "Pickup Address Alias (optional)"
+				},
+				"placeholder": "e.g., Warehouse A",
+				"maxLength": 255
+			},
+			{
+				"id": "pickupAddressStep.pickupContactField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "300px"
+				},
+				"code": "pickupContact",
+				"label": {
+					"text": "Pickup Contact Name"
+				},
+				"placeholder": "Contact person name",
+				"maxLength": 255
+			},
+			{
+				"id": "pickupAddressStep.pickupPhoneField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"basis": "300px"
+				},
+				"code": "pickupPhoneNumber",
+				"label": {
+					"text": "Pickup Phone Number"
+				},
+				"placeholder": "+1 (555) 123-4567",
+				"maxLength": 20
+			},
+			{
+				"id": "pickupAddressStep.pickupAddressLine1Field",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "pickupAddressLine1",
+				"label": {
+					"text": "Address Line 1"
+				},
+				"placeholder": "Street address",
+				"maxLength": 255
+			},
+			{
+				"id": "pickupAddressStep.pickupAddressLine2Field",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "pickupAddressLine2",
+				"label": {
+					"text": "Address Line 2 (optional)"
+				},
+				"placeholder": "Apartment, suite, etc.",
+				"maxLength": 255
+			}
+		],
+		"select": [
+			{
+				"id": "pickupAddressStep.pickupCountryField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "Country is required"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "pickupCountryId",
+				"label": {
+					"text": "Country"
+				},
+				"placeholder": "Select country",
+				"source": "countries",
+				"optionsKey": "id",
+				"optionsLabel": "name"
+			},
+			{
+				"id": "pickupAddressStep.pickupCityField",
+				"category": "field",
+				"conditions": {
+					"required": [
+						{
+							"expression": "true",
+							"error": "City is required"
+						}
+					]
+				},
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "pickupCityId",
+				"label": {
+					"text": "City"
+				},
+				"placeholder": "Select city",
+				"source": "cities",
+				"optionsKey": "id",
+				"optionsLabel": "name",
+				"dependsOn": "pickupCountryId"
+			}
+		],
+		"textarea": [
+			{
+				"id": "pickupAddressStep.pickupCommentField",
+				"category": "field",
+				"margin": {
+					"top": 24
+				},
+				"flexProperties": {
+					"grow": 1
+				},
+				"code": "pickupComment",
+				"label": {
+					"text": "Pickup Comments (optional)"
+				},
+				"placeholder": "Additional instructions for pickup",
+				"minRows": 2,
+				"maxRows": 4
+			}
+		],
+		"typography": [
+			{
+				"id": "pickupAddressStep.pickupTitle",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "pickupAddressStep.pickupTitle.textElement1",
+							"breakAfter": false,
+							"text": "Pickup Address",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "pickupAddressStep.pickupTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "desktopChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 52,
+					"bottom": 40
+				},
+				"source": {
+					"text": [
+						{
+							"id": "desktopChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "All filled fields are saved automatically",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "desktopChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "mobileChangesSavedInfo",
+				"category": "static",
+				"margin": {
+					"top": 16,
+					"bottom": 24
+				},
+				"source": {
+					"text": [
+						{
+							"id": "mobileChangesSavedInfo.textElement1",
+							"breakAfter": false,
+							"text": "All filled fields are saved automatically",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "mobileChangesSavedInfo.textElement1",
+						"type": "text"
+					}
+				]
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobilePreviousStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"xsHidden": false,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupCountryField",
+							"type": "select"
+						},
+						{
+							"id": "pickupAddressStep.pickupCityField",
+							"type": "select"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "start",
+						"wrap": "wrap"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupAddressLine1Field",
+							"type": "input"
+						}
+					],
+					"gridPosition": {
+						"xs": 12
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupAddressLine2Field",
+							"type": "input"
+						}
+					],
+					"gridPosition": {
+						"xs": 12
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupAliasField",
+							"type": "input"
+						}
+					],
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupContactField",
+							"type": "input"
+						}
+					],
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupPhoneField",
+							"type": "input"
+						}
+					],
+					"gridPosition": {
+						"xs": 12,
+						"m": 6,
+						"l": 6
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "pickupAddressStep.pickupCommentField",
+							"type": "textarea"
+						}
+					],
+					"gridPosition": {
+						"xs": 12
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "desktopChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 6,
+						"l": 6,
+						"xsHidden": true
+					}
+				},
+				{
+					"components": [
+						{
+							"id": "desktopPreviousStepButton",
+							"type": "button"
+						},
+						{
+							"id": "desktopNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 5,
+						"l": 5,
+						"mOffset": 1,
+						"lOffset": 1,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileNextStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileChangesSavedInfo",
+							"type": "typography"
+						}
+					],
+					"flexbox": {
+						"justify": "center"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "pickupAddressStep",
+	"previousStepId": "transportationStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "transportation",
+					"action": "openStep",
+					"label": "createTransportationForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "createTransportationForm",
+						"extra": {
+							"formId": "",
+							"stepId": "pickupAddressStep"
+						}
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Provide accurate addresses with all necessary details. This helps carriers plan their routes and ensures timely pickup and delivery.",
+							"breakAfterText": false,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "Address Information",
+			"imageLink": "step3.png"
+		},
+		"progress": {
+			"header": "Create Transportation",
+			"progress": 30,
+			"stepName": "Pickup Addresses"
+		},
+		"help": {
+			"title": "Need help?",
+			"successTitle": "We received your request, we'll call you soon",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Leave your phone number, we'll call you back soon — on weekdays from 9 to 18. While waiting, try to find an answer in the ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "help center",
+						"link": "#",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "I'll wait!",
+			"confirmButtonText": "Call me",
+			"cancelButtonText": "Cancel",
+			"previewText": "Need help?"
+		}
+	},
+	"draftId": ""
+}

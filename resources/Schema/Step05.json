@@ -1,0 +1,846 @@
+{
+	"source": {
+		"button": [
+			{
+				"id": "mobilePreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Back",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"beforeIcon": {
+					"link": "",
+					"width": 16,
+					"height": 14
+				},
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "transportation",
+						"action": "previousStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "confirmStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopPreviousStepButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Back",
+				"actionType": "previousStep",
+				"size": "medium",
+				"theme": "fill_white_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "previousStepClick",
+						"category": "transportation",
+						"action": "previousStepClick",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "confirmStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "desktopConfirmButton",
+				"category": "button",
+				"margin": {
+					"top": 40,
+					"bottom": 40
+				},
+				"text": "Confirm Transportation",
+				"actionType": "confirm",
+				"size": "large",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "confirmTransportationClick",
+						"category": "transportation",
+						"action": "confirmTransportation",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "confirmStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			},
+			{
+				"id": "mobileConfirmButton",
+				"category": "button",
+				"margin": {
+					"top": 24
+				},
+				"text": "Confirm Transportation",
+				"actionType": "confirm",
+				"size": "large",
+				"theme": "fill_primary",
+				"fullWidth": false,
+				"eventMapping": {
+					"click": {
+						"id": "confirmTransportationClick",
+						"category": "transportation",
+						"action": "confirmTransportation",
+						"label": "createTransportationForm",
+						"page": {
+							"siteType": "desktop",
+							"pageType": "createTransportationForm",
+							"extra": {
+								"formId": "",
+								"stepId": "confirmStep"
+							}
+						},
+						"shouldEnrich": false
+					}
+				}
+			}
+		],
+		"typography": [
+			{
+				"id": "confirmStep.title",
+				"category": "static",
+				"margin": {
+					"top": 28
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.title.textElement1",
+							"breakAfter": false,
+							"text": "Review and Confirm",
+							"style": "UIHeading2",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.title.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.description",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.description.textElement1",
+							"breakAfter": false,
+							"text": "Please review all the information below. Once confirmed, your transportation will be published and available for carriers.",
+							"style": "UIText1",
+							"color": "gray40_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.description.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.transportationInfoTitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.transportationInfoTitle.textElement1",
+							"breakAfter": false,
+							"text": "Transportation Details",
+							"style": "UIHeading3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.transportationInfoTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.transportationNameLabel",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.transportationNameLabel.textElement1",
+							"breakAfter": false,
+							"text": "Name: ",
+							"style": "UIText1",
+							"color": "gray60_100"
+						},
+						{
+							"id": "confirmStep.transportationNameLabel.textElement2",
+							"breakAfter": false,
+							"text": "{{name}}",
+							"style": "UIText1",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.transportationNameLabel.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.transportationNameLabel.textElement2",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.pickupIntervalLabel",
+				"category": "static",
+				"margin": {
+					"top": 8
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.pickupIntervalLabel.textElement1",
+							"breakAfter": false,
+							"text": "Pickup Interval: ",
+							"style": "UIText1",
+							"color": "gray60_100"
+						},
+						{
+							"id": "confirmStep.pickupIntervalLabel.textElement2",
+							"breakAfter": false,
+							"text": "{{pickupFrom}} - {{pickupTo}}",
+							"style": "UIText1",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.pickupIntervalLabel.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.pickupIntervalLabel.textElement2",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.pickupAddressTitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.pickupAddressTitle.textElement1",
+							"breakAfter": false,
+							"text": "Pickup Address",
+							"style": "UIHeading3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.pickupAddressTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.pickupAddressInfo",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.pickupAddressInfo.textElement1",
+							"breakAfter": true,
+							"text": "{{pickupAddressLine1}}",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "confirmStep.pickupAddressInfo.textElement2",
+							"breakAfter": true,
+							"text": "{{pickupAddressLine2}}",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "confirmStep.pickupAddressInfo.textElement3",
+							"breakAfter": true,
+							"text": "{{pickupCity}}, {{pickupCountry}}",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "confirmStep.pickupAddressInfo.textElement4",
+							"breakAfter": false,
+							"text": "Contact: {{pickupContact}} | Phone: {{pickupPhoneNumber}}",
+							"style": "UIText1",
+							"color": "gray60_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.pickupAddressInfo.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.pickupAddressInfo.textElement2",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.pickupAddressInfo.textElement3",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.pickupAddressInfo.textElement4",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.deliveryAddressTitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.deliveryAddressTitle.textElement1",
+							"breakAfter": false,
+							"text": "Delivery Address",
+							"style": "UIHeading3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.deliveryAddressTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.deliveryAddressInfo",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.deliveryAddressInfo.textElement1",
+							"breakAfter": true,
+							"text": "{{deliveryAddressLine1}}",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "confirmStep.deliveryAddressInfo.textElement2",
+							"breakAfter": true,
+							"text": "{{deliveryAddressLine2}}",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "confirmStep.deliveryAddressInfo.textElement3",
+							"breakAfter": true,
+							"text": "{{deliveryCity}}, {{deliveryCountry}}",
+							"style": "UIText1",
+							"color": "black_100"
+						},
+						{
+							"id": "confirmStep.deliveryAddressInfo.textElement4",
+							"breakAfter": false,
+							"text": "Contact: {{deliveryContact}} | Phone: {{deliveryPhoneNumber}}",
+							"style": "UIText1",
+							"color": "gray60_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.deliveryAddressInfo.textElement1",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.deliveryAddressInfo.textElement2",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.deliveryAddressInfo.textElement3",
+						"type": "text"
+					},
+					{
+						"id": "confirmStep.deliveryAddressInfo.textElement4",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.cargosTitle",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"text": [
+						{
+							"id": "confirmStep.cargosTitle.textElement1",
+							"breakAfter": false,
+							"text": "Cargos ({{cargosCount}})",
+							"style": "UIHeading3",
+							"color": "black_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.cargosTitle.textElement1",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"id": "confirmStep.warningText",
+				"category": "static",
+				"margin": {
+					"top": 32
+				},
+				"source": {
+					"icon": [
+						{
+							"id": "confirmStep.warningText.iconElement1",
+							"breakAfter": false,
+							"link": "",
+							"width": 16,
+							"height": 16
+						}
+					],
+					"text": [
+						{
+							"id": "confirmStep.warningText.textElement1",
+							"breakAfter": false,
+							"text": "Once confirmed, your transportation will be published and visible to carriers. You can edit it within 2 days after publication.",
+							"style": "UIText1",
+							"color": "gray60_100"
+						}
+					]
+				},
+				"elements": [
+					{
+						"id": "confirmStep.warningText.textElement1",
+						"type": "text"
+					}
+				],
+				"icon": {
+					"id": "confirmStep.warningText.iconElement1",
+					"type": "icon"
+				}
+			}
+		],
+		"reviewCard": [
+			{
+				"id": "confirmStep.cargosReviewCard",
+				"category": "static",
+				"margin": {
+					"top": 16
+				},
+				"code": "cargos",
+				"template": {
+					"title": "{{name}}",
+					"fields": [
+						{
+							"label": "Dimensions",
+							"value": "{{length}} cm × {{width}} cm × {{height}} cm"
+						},
+						{
+							"label": "Weight",
+							"value": "{{weight}} kg"
+						},
+						{
+							"label": "Price",
+							"value": "{{price}} {{currency}}"
+						}
+					]
+				}
+			}
+		]
+	},
+	"rows": [
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobilePreviousStepButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"xsHidden": false,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.title",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.description",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.transportationInfoTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.transportationNameLabel",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.pickupIntervalLabel",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.pickupAddressTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.pickupAddressInfo",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.deliveryAddressTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.deliveryAddressInfo",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.cargosTitle",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.cargosReviewCard",
+							"type": "reviewCard"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "confirmStep.warningText",
+							"type": "typography"
+						}
+					]
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "desktopPreviousStepButton",
+							"type": "button"
+						},
+						{
+							"id": "desktopConfirmButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"columnGap": "16px",
+						"justify": "end"
+					},
+					"gridPosition": {
+						"xs": 0,
+						"m": 12,
+						"l": 12,
+						"xsHidden": true
+					}
+				}
+			]
+		},
+		{
+			"columns": [
+				{
+					"components": [
+						{
+							"id": "mobileConfirmButton",
+							"type": "button"
+						}
+					],
+					"flexbox": {
+						"justify": "start"
+					},
+					"gridPosition": {
+						"xs": 12,
+						"m": 0,
+						"l": 0,
+						"mHidden": true,
+						"lHidden": true
+					}
+				}
+			]
+		}
+	],
+	"currentStepId": "confirmStep",
+	"previousStepId": "cargoStep",
+	"eventMapping": {
+		"load": [
+			{
+				"id": "openStep",
+				"type": "openStep"
+			}
+		],
+		"source": {
+			"openStep": [
+				{
+					"id": "openStep",
+					"category": "transportation",
+					"action": "openStep",
+					"label": "createTransportationForm",
+					"page": {
+						"siteType": "desktop",
+						"pageType": "createTransportationForm",
+						"extra": {
+							"formId": "",
+							"stepId": "confirmStep"
+						}
+					},
+					"shouldEnrich": false
+				}
+			]
+		}
+	},
+	"sidebar": {
+		"advice": {
+			"text": [
+				{
+					"elements": [
+						{
+							"text": "Double-check all information before confirming. Once published, your transportation will be visible to carriers and you can start receiving offers.",
+							"breakAfterText": false,
+							"styles": []
+						}
+					]
+				}
+			],
+			"header": "Final Step",
+			"imageLink": "step5.png"
+		},
+		"progress": {
+			"header": "Create Transportation",
+			"progress": 100,
+			"stepName": "Review and Confirm"
+		},
+		"help": {
+			"title": "Need help?",
+			"successTitle": "We received your request, we'll call you soon",
+			"source": {
+				"text": [
+					{
+						"id": "helpSidebarDesktopBlock.textElement1",
+						"breakAfter": false,
+						"text": "Leave your phone number, we'll call you back soon — on weekdays from 9 to 18. While waiting, try to find an answer in the ",
+						"style": "UIText2",
+						"color": "black_100"
+					},
+					{
+						"id": "helpSidebarDesktopBlock.textElement2",
+						"breakAfter": false,
+						"text": ".",
+						"style": "UIText2",
+						"color": "black_100"
+					}
+				],
+				"link": [
+					{
+						"id": "helpSidebarDesktopBlock.linkElement1",
+						"breakAfter": false,
+						"text": "help center",
+						"link": "#",
+						"linkOptions": {
+							"noRef": true,
+							"noFollow": true,
+							"newTab": true
+						},
+						"style": "UIText2"
+					}
+				]
+			},
+			"elements": [
+				{
+					"id": "helpSidebarDesktopBlock.textElement1",
+					"type": "text"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.linkElement1",
+					"type": "link"
+				},
+				{
+					"id": "helpSidebarDesktopBlock.textElement2",
+					"type": "text"
+				}
+			],
+			"successButtonText": "I'll wait!",
+			"confirmButtonText": "Call me",
+			"cancelButtonText": "Cancel",
+			"previewText": "Need help?"
+		}
+	},
+	"draftId": ""
+}
